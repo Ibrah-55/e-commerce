@@ -7,7 +7,8 @@ import { useFilterContext } from '@/context/filter_context';
 import { useTranslation } from "@/app/i18n/client";
 import type { LocaleTypes } from "@/app/i18n/settings";
 import Button from "./Button";
-import './filter.css'
+import './filter.css';
+
 const Filters = () => {
   const locale = useParams()?.locale as LocaleTypes;
   const { t } = useTranslation(locale, "common");
@@ -29,13 +30,26 @@ const Filters = () => {
   }
   
   useEffect(() => {
-    getCategories()
-  }, [])
+    getCategories();
+  }, []);
+
+  const handleCategoryClick = (slug: string) => {
+    // Create a mock event object with the same structure as a real change event
+    const mockEvent = {
+      target: {
+        name: 'category',
+        value: slug,
+        checked: !categoryFilter.includes(slug),
+      },
+    } as unknown as React.ChangeEvent<HTMLInputElement>; // Casting to satisfy TypeScript
+
+    updateFilters(mockEvent);
+  };
 
   if (products.length > 0) {
     return (
       <div>
-        <div className='content mb-6 bg-gray-400' >
+        <div className='content mb-6 bg-gray-400'>
           <form 
             className='filter__form' 
             onSubmit={(e) => e.preventDefault()}>
@@ -45,7 +59,7 @@ const Filters = () => {
                 type='text'
                 name='text'
                 placeholder={t("shop.searchProducts")}
-                className="bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                className="bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                 value={text}
                 onChange={updateFilters}
               />
@@ -53,11 +67,11 @@ const Filters = () => {
             <div className='form__control mb-4'>
               <h4 className="text-xl mb-2">{t("shop.categories")}</h4>
               <ul className='form__categories flex flex-wrap'>
-                {categories && categories.slice (0,15).map((category) => (
+                {categories && categories.slice(0, 15).map((category) => (
                   <li 
                     key={category.slug}
                     className={`cursor-pointer p-2 mr-2 mb-2 border border-gray-300 rounded-md ${categoryFilter.includes(category.slug) ? 'bg-amber-100' : ''}`}
-                    onClick={() => updateFilters({ target: { name: 'category', value: category.slug, checked: !categoryFilter.includes(category.slug) } })}
+                    onClick={() => handleCategoryClick(category.slug)}
                   >
                     {category.name}
                   </li>
