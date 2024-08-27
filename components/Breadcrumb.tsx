@@ -16,13 +16,11 @@ const Breadcrumb:React.FC<BreadcrumbProps> = ({ title, products }) => {
 
   const pathname = usePathname()
   const isProductPage = pathname.startsWith('/products');
-  const isArticlePage = pathname.startsWith('/articles');
 
   return (
     <div>
       <Link href='/'>{t("breadcrumbs.home")} /</Link>
       {isProductPage && <Link href='/products'> {t("breadcrumbs.products")} / </Link>}
-      {isArticlePage && <Link href='/articles'> {t("breadcrumbs.articles")} / </Link>}
       <span>  {title }</span>
     </div>
   );

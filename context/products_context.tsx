@@ -42,7 +42,7 @@ const initialState = {
 
 const ProductsContext = createContext<ProductsContextType | undefined>(undefined);
 
-const API_ENDPOINT = "https://dummyjson.com/products?limit=400";
+const API_ENDPOINT = "https://dummyjson.com/products?limit=800";
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);

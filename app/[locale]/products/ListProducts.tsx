@@ -1,42 +1,28 @@
+'use client';
 
-import Link from "next/link";
-import Image from "next/image";
-import { useParams } from 'next/navigation'
+import { useParams } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Product } from '@/types/product';
 // Internationalization
 import { useTranslation } from "@/app/i18n/client";
 import type { LocaleTypes } from "@/app/i18n/settings";
+import ProductCart from '@/components/ProductCard';
 
-const ListProducts = ({ products }) => {
+const ProductList = ({ products }: { products: Product[] }) => {
   const locale = useParams()?.locale as LocaleTypes;
   const { t } = useTranslation(locale, "common");
 
+  // Slice the products array to show only the first 12 items
+  const displayedProducts = products.slice(0, 12);
+
   return (
-    <div className="grid grid-cols-1 gap-1.2 p-1 md:mb-1.5">
-    {products.map(({ title, thumbnail, id, price, description }) => (
-      <article key={id} className='bg-white shadow-md rounded-lg px-2 py-2 md:px-5 md:py-5 flex align-center items-center mb-2.5'>
-        <div className='product__img mr-4'>
-          <Image src={thumbnail} width={200} height={200} alt={title}/>
-        </div>
-        <div className='product__info'>
-          <h3 className="text-sm md:text-lg uppercase font-bold">{title}</h3>
-          <p className='mt-2 text-gray-600'>${price}</p>
-          <p className="mt-2 mb-4 text-gray-600 text-md">{description.slice(0, 70)}...</p>
-          <Link
-            href={{
-              pathname: "products/product",
-              query: {id: id},
-            }}
-            className="mt-2 lg:mt-0 px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-          >
-          {t("shop.viewProduct")}
-        </Link>
-        </div>
-      </article>
+    <div className="grid grid-cols-1 gap-1.2 p-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {displayedProducts.map((product) => (
+        <ProductCart key={product.id} product={product} />
       ))}
-      </div>
-    );
-  };
-  
+    </div>
+  );
+};
 
-
-export default ListProducts;
+export default ProductList;
