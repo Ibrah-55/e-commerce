@@ -23,7 +23,7 @@ const Cart = () => {
   }
 
   return (
-    <main className='px-5 lg:px-20 py-5'>
+    <main className='px-5 lg:px-20 py-5 bg-gray-400'>
     <Breadcrumb title={t("shop.cart.cart")} />
     <div className='grid md:grid-cols-3 mt-4 md:mt-8 lg:px-10 md:gap-6'>
       <div className='cart-content grid gap-1 md:gap-2 md:col-span-2'>

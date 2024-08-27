@@ -13,7 +13,7 @@ const ProductCart = ({product}: {product: Product}) => {
   const { t } = useTranslation(locale, "common");
 
   return (
-    <div key={product.id} className='bg-white shadow-md rounded-lg px-2 py-2 md:px-5 md:py-5 flex flex-col justify-between w-full'>
+    <div key={product.id} className='bg-gray-300 shadow-md rounded-lg px-2 py-2 md:px-5 md:py-5 flex flex-col justify-between w-full'>
       <Image src={product.thumbnail} width={600} height={150} alt={product.title} className='rounded-md h-14 object-cover md:h-30 sm:object-scale-down w-screen' />
       <div className='mt-2 md:mt-4'>
         <h1 className='text-sm md:text-lg uppercase font-bold'>

@@ -14,7 +14,6 @@ import { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { FaShoppingCart } from "react-icons/fa";
 import { useCartContext } from '@/context/cart_context';
-// Internationalization
 import { useTranslation } from "@/app/i18n/client";
 import type { LocaleTypes } from "@/app/i18n/settings";
 import Filters from './Filters';
@@ -35,7 +34,7 @@ const Header = () => {
   };
 
   return (
-    <div className='bg-indigo-900 flex justify-between items-center h-20 mx-auto px-4 text-amber-200'>
+    <div className='bg-gray-900 flex justify-between items-center h-20 mx-auto px-4 text-amber-200'>
       <Link href="/">
         <h2 className='w-full text-xl lg:text-3xl font-bold text-amber-200'>{t("header.siteTitle")}</h2>
       </Link>
@@ -43,7 +42,6 @@ const Header = () => {
       {/* Desktop Navigation */}
       <nav className='nav'>
         <ul className='hidden md:flex md:items-center space-x-4'>
-          <Link className={`nav-link ${pathname === '/products' ? 'active' : ''}`} href="/products">{t("header.mainNav.shop")}</Link>
 
           {/* Category Filter Component */}
           <CategoryFilter />

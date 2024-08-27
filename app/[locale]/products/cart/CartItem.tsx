@@ -41,7 +41,7 @@ const CartItem = ({ title, price, amount, id, image }) => {
           <span>${(price * amount).toFixed(2)}</span>
         </p>
       </div>
-      <div className='flex gap-2 md:gap-4 h-full'>
+      <div className='flex gap-2 md:gap-4 h-full '>
         <AmountButtons amount={amount} increase={increase} decrease={decrease} />
         <Button
           onClick={() => removeItem(id)}

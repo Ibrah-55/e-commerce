@@ -15,7 +15,7 @@ const ProductsPage = () => {
 
   return (
     <main>
-      <div className='px-10 lg:px-20 py-5'>
+      <div className='px-10 lg:px-20 py-5 bg-gray-400'>
         <Breadcrumb title={t("breadcrumbs.products")}/>
         <h1 className='text-2xl uppercase font-bold mt-10 mb-10'>{t("shop.shop")}</h1> 
       </div>
