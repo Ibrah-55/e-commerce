@@ -30,13 +30,26 @@ const CategoryFilters = () => {
     getCategories();
   }, []);
 
+  const handleCategoryClick = (slug: string) => {
+    // Create a mock event object
+    const event = {
+      target: {
+        name: 'category',
+        value: slug,
+        checked: !categoryFilter.includes(slug),
+      },
+    } as unknown as React.ChangeEvent<HTMLInputElement>; // Type cast to fit the expected type
+
+    updateFilters(event);
+  };
+
   return (
     <div className="category-filter flex items-center space-x-4">
       {categories.slice(0, 5).map((category) => (
         <div 
           key={category.slug} 
           className={`cursor-pointer ${categoryFilter.includes(category.slug) ? 'text-amber-500' : 'text-white'}`} 
-          onClick={() => updateFilters({ target: { name: 'category', value: category.slug, checked: !categoryFilter.includes(category.slug) } })}
+          onClick={() => handleCategoryClick(category.slug)}
         >
           {category.name}
         </div>
