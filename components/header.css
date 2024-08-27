@@ -48,3 +48,22 @@
     filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
   }
 }
+.category-filter {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  gap: 1rem; /* Add space between category items */
+  overflow-x: auto; /* Allows horizontal scrolling if categories overflow */
+}
+
+.category-item {
+  white-space: nowrap; /* Prevent text wrapping */
+  color: #fff; /* Adjusts text color for better visibility */
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+
+/* Hide category filter on mobile */
+@media (max-width: 768px) {
+  .category-filter {
+    display: none;
+  }
+}

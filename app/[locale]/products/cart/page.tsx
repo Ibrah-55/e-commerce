@@ -11,6 +11,7 @@ import EmptyCart from './EmptyCart';
 // Internationalization
 import { useTranslation } from "@/app/i18n/client";
 import type { LocaleTypes } from "@/app/i18n/settings";
+import SimilarProducts from '../SimilarProducts';
 
 const Cart = () => {
   const locale = useParams()?.locale as LocaleTypes;
@@ -49,6 +50,12 @@ const Cart = () => {
       </div>
       <CartTotals />
     </div>
+    <h2 className="mt-4 text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
+      <div className="">
+        <div>
+<SimilarProducts />
+</div>
+        </div>
   </main>
   )
 }

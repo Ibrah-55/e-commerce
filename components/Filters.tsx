@@ -1,13 +1,13 @@
 'use client';
 
-import { useParams } from 'next/navigation'
-import Button from "./Button";
-import { useState, useEffect } from "react";
-import { useFilterContext } from "@/context/filter_context";
+import { useParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useFilterContext } from '@/context/filter_context';
 // Internationalization
 import { useTranslation } from "@/app/i18n/client";
 import type { LocaleTypes } from "@/app/i18n/settings";
-
+import Button from "./Button";
+import './filter.css'
 const Filters = () => {
   const locale = useParams()?.locale as LocaleTypes;
   const { t } = useTranslation(locale, "common");
@@ -40,7 +40,7 @@ const Filters = () => {
             className='filter__form' 
             onSubmit={(e) => e.preventDefault()}>
             <div className='relative w-4/5 mb-4'>
-            <label htmlFor="voice-search" className="sr-only">{t("shop.search")}</label>
+              <label htmlFor="voice-search" className="sr-only">{t("shop.search")}</label>
               <input
                 type='text'
                 name='text'
@@ -52,26 +52,17 @@ const Filters = () => {
             </div>
             <div className='form__control mb-4'>
               <h4 className="text-xl mb-2">{t("shop.categories")}</h4>
-              <div className='form__categories'>
-              {categories && categories.map((category) => (
-                <div key={category.slug}> 
-                    <div className="form-check">
-                      <input 
-                        className="w-5 h-5 cursor-pointer appearance-none border border-gray-800  rounded-md mr-2 hover:border-amber-500 hover:bg-amber-100 checked:bg-no-repeat checked:bg-center checked:border-amber-500 checked:bg-amber-100 checked:bg-[url('https://pagedone.io/asset/uploads/1689406942.svg')]" 
-                        name="category"
-                        type="checkbox" 
-                        value={category.slug} 
-                        id={category.slug}
-                        checked={categoryFilter.includes(category.slug)}
-                        onChange={updateFilters}
-                      />
-                      <label className="inline-block ps-[0.15rem] hover:cursor-pointer pl-2" htmlFor={category.slug}>
-                      {category.name}     
-                      </label>
-                    </div> 
-                </div>
-              ))}
-              </div>
+              <ul className='form__categories flex flex-wrap'>
+                {categories && categories.map((category) => (
+                  <li 
+                    key={category.slug}
+                    className={`cursor-pointer p-2 mr-2 mb-2 border border-gray-300 rounded-md ${categoryFilter.includes(category.slug) ? 'bg-amber-100' : ''}`}
+                    onClick={() => updateFilters({ target: { name: 'category', value: category.slug, checked: !categoryFilter.includes(category.slug) } })}
+                  >
+                    {category.name}
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className='form__control'>
               <h4 className="text-xl mb-2">{t("shop.price")}</h4>
@@ -86,9 +77,7 @@ const Filters = () => {
               />
             </div>
           </form>
-          <Button
-            onClick={clearFilters}
-          >
+          <Button onClick={clearFilters}>
             {t("shop.resetFilters")}
           </Button>
         </div>

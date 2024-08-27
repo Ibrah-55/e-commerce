@@ -48,6 +48,7 @@ const CartItem = ({ title, price, amount, id, image }) => {
         >
           <FaTrash />
         </Button>
+        
       </div>
   </article>
 }

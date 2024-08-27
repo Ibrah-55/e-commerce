@@ -21,6 +21,7 @@ const EmptyCart = () => {
           </Button>
         </div>
       </div>
+      
     </main>
   );
 };
