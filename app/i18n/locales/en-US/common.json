@@ -4,7 +4,7 @@
     "mainNav": {
       "home": "Home",
       "shop": "Shop",
-      "articles": "Articles"
+      "": ""
     },
     "miniCart": {
       "shoppingCart": "Shopping Cart",
@@ -23,7 +23,7 @@
   },
   "homePage": {
     "welcomeTitle": "Welcome to Next js store!",
-    "welcomeDescr": "These blog articles come from Contentful CMS. User can create, delete, update."
+    "welcomeDescr": "These blog  come from Contentful CMS. User can create, delete, update."
   },
   "blog": {
     "readMore": "Read more",
@@ -76,6 +76,6 @@
   "breadcrumbs": {
     "home": "Home",
     "products": "Products",
-    "articles": "Articles"
+    "": ""
   }
 }

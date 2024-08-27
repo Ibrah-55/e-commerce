@@ -67,7 +67,7 @@ const Filters = () => {
             <div className='form__control mb-4'>
               <h4 className="text-xl mb-2">{t("shop.categories")}</h4>
               <ul className='form__categories flex flex-wrap'>
-                {categories && categories.slice(0, 15).map((category) => (
+                {categories && categories.map((category) => (
                   <li 
                     key={category.slug}
                     className={`cursor-pointer p-2 mr-2 mb-2 border border-gray-300 rounded-md ${categoryFilter.includes(category.slug) ? 'bg-amber-100' : ''}`}
