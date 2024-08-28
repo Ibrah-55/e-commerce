@@ -1,7 +1,7 @@
 import "./index.css";
 
 export const metadata = {
-  title: "a-zDeb ug E-commerce",
+  title: "a-zDebug E-commerce",
   description: "Ecommerce application",
 };
 

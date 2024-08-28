@@ -70,7 +70,7 @@
 //         preview: false
 //   ) {
 //         items {
-//           ${ARTICLE_GRAPHQL_FIELDS}
+//           ${_GRAPHQL_FIELDS}
 //         }
 //       }
 //     }`,

@@ -10,6 +10,8 @@ import { Suspense } from 'react';
 import { useTranslation } from "@/app/i18n/client";
 import type { LocaleTypes } from "@/app/i18n/settings";
 import ListProductsThumbNail from './ListProductsthumbNail';
+import Products from './Products';
+import ProductCart from '@/components/ProductCard';
 
 const SimilarProducts = () => {
   const locale = useParams()?.locale as LocaleTypes;
@@ -31,22 +33,28 @@ const SimilarProducts = () => {
     );
   }
 
-  // Slice the first 3 products
-  const limitedProducts = products.slice(0,3);
+  // Slice the first 4 products
+  const limitedProducts = products.slice(0, 4);
 
   return (
     <>
-      {grid_view 
-        ? (
-          <Suspense fallback={<div>Loading...</div>}>
-            <GridProducts products={limitedProducts} />
-          </Suspense>
-        ) : (
-          <Suspense fallback={<div>Loading...</div>}>
-            <ListProductsThumbNail products={limitedProducts} />
-          </Suspense>
-        )
-      }
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          {grid_view 
+            ? (
+              <Suspense fallback={<div>Loading...</div>}>
+                <GridProducts products={limitedProducts} />
+              </Suspense>
+            ) : (
+              <Suspense fallback={<div>Loading...</div>}>
+                <ListProductsThumbNail products={limitedProducts} />
+              </Suspense>
+            )
+          }
+        </>
+      )}
     </>
   );
 }

@@ -52,10 +52,11 @@ const Cart = () => {
     </div>
     <h2 className="mt-4 text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
       <div className="">
+      <SimilarProducts />
         <div>
-<SimilarProducts />
 </div>
         </div>
+
   </main>
   )
 }
